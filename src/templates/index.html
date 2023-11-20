@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#830000"/>
+    
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <link rel="manifest" href="./app.webmanifest">
+    <link rel="icon" href="logo.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+
+    <title>Restaurant Catalogue</title>
+  </head>
+  <body>
+    <div class="loading-screen">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <p>Now Loading...</p>
+    </div>
+
+    <a href="#mainContent" class="skip-to-main-content">Skip to main content</a>
+    <header class="app-bar">
+      <div class="app-bar__menu">
+        <button id="hamburgerButton">☰</button>
+      </div>
+      <div class="app-bar__brand">
+        <img src="logo.png" alt="Logo" />
+        <h1>Roid Resto Catalogue</h1>
+      </div>
+      <nav id="navigationDrawer" class="app-bar__navigation">
+        <ul>
+          <li><a href="#/home">Home</a></li>
+          <li><a href="#/favorite">Favorite</a></li>
+          <li><a href="https://www.linkedin.com/in/arfan-astaraja-8b1b54221" target="_blank" rel="noreferrer">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="mainContent" tabindex="0"></main>
+    <footer><footer>
+      <p>
+        &copy; 2023 -
+        <a href="https://restaurant-api.dicoding.dev" target="_blank" rel="noreferrer"
+          >Astaroid Apps</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

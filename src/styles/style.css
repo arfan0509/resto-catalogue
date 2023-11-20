@@ -1,0 +1,442 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Century Schoolbook', sans-serif;
+  background-color: white;
+  min-height: 100vh;
+}
+
+/*
+  Loading
+*/
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column; /* Menyusun elemen secara vertikal */
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  z-index: 999;
+}
+
+.logo {
+  width: 100px; /* Sesuaikan ukuran logo sesuai kebutuhan */
+  height: 100px;
+  /* Tambahkan animasi loading, contoh: */
+  animation: spin 2s linear infinite;
+}
+
+.loading-screen p {
+  font-size: 24px;
+  margin-top: 20px; /* Menambahkan jarak antara logo dan teks */
+}
+
+@keyframes flip {
+  0% {
+    transform: perspective(120px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateY(180deg);
+  }
+  100% {
+    transform: perspective(120px) rotateY(360deg);
+  }
+}
+
+.loading-screen img {
+  animation: flip 1s infinite; /* Menambahkan animasi flip ke elemen gambar */
+}
+
+
+/*
+  Like
+*/
+.like {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #830000;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  border-radius: 50%;
+  border: 0;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.like:hover {
+  background-color: #db0000; /* Warna ketika tombol dihover */
+  transform: scale(1.1); /* Animasi perbesar saat dihover */
+}
+
+
+
+/* AppBar Styles */
+.app-bar {
+  padding: 8px 16px;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s; /* Efek transisi perubahan warna latar belakang */
+}
+
+.app-bar .app-bar__menu {
+  display: flex;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+}
+
+.app-bar .app-bar__menu button {
+  background-color: transparent;
+  border: none;
+  font-size: 27px;
+  padding: 5px;
+  cursor: pointer;
+  color: black;
+  width: 45px;
+  height: 45px;
+}
+
+.app-bar .app-bar__brand img {
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+}
+
+.app-bar .app-bar__brand {
+  display: flex;
+  align-items: center;
+}
+
+.app-bar .app-bar__brand h1 {
+  font-size: 20px;
+  color: #830000;
+  text-transform: capitalize;
+  user-select: none;
+}
+
+/* AppBar hamburger btn Styles */
+.app-bar .app-bar__navigation {
+  position: absolute;
+  top: 50px;
+  left: -180px;
+  max-width: 100%;
+  transition: all 0.3s;
+  padding: 8px;
+  background-color: white;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.app-bar .app-bar__navigation.open {
+  left: 0;
+}
+
+.app-bar .app-bar__navigation ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  padding: 11px 16px; /* Sesuaikan dengan ukuran minimal 44x44px */
+  margin-bottom: 5px;
+  width: 100%;
+  font-size: 20px;
+  transition: color 0.3s; /* Efek transisi perubahan warna teks saat hover */
+}
+
+.app-bar .app-bar__navigation ul li a:hover {
+  color: #830000; /* Warna teks saat dihover */
+}
+
+/* Tambahkan efek garis bawah saat cursor menyentuh teks */
+.app-bar .app-bar__menu a,
+.app-bar .app-bar__navigation ul li a {
+  text-decoration: none;
+  position: relative;
+}
+
+.app-bar .app-bar__menu a::after,
+.app-bar .app-bar__navigation ul li a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.app-bar .app-bar__menu a:hover::after,
+.app-bar .app-bar__navigation ul li a:hover::after {
+  visibility: visible;
+  transform: scaleX(1);
+  background-color: #830000; /* Warna garis bawah saat teks dihover */
+}
+
+
+
+/* Jumbotron Styles */
+.jumbotron {
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 200px 0;
+  color: #fff;
+}
+
+.jumbotron h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px #525252; /* Menambahkan shadow text */
+}
+
+.jumbotron p {
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px #525252; /* Menambahkan shadow text */
+}
+
+/* Background image for mobile */
+@media screen and (max-width: 650px) {
+  .jumbotron {
+    background-image: url('/src/public/images/hero-image_2-small.jpg');
+  }
+}
+
+/* Background image for desktop */
+@media screen and (min-width: 651px) {
+  .jumbotron {
+    background-image: url('/src/public/images/hero-image_2.jpg');
+  }
+}
+
+/* About Us */
+
+.about-me {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.about-me h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about-me p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/*
+  Main Content
+*/
+
+main {
+  flex: 4;
+}
+
+.content {
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+.content__heading {
+  font-size: 2rem; /* Atur ukuran font h2 sesuai keinginan Anda */
+  margin-bottom: 20px; /* Sesuaikan margin-bottom sesuai keinginan Anda */
+  text-align: center; /* Jika Anda ingin teks berada di tengah */
+}
+
+
+
+.content .content__heading {
+  font-weight: normal;
+}
+
+
+/*
+  Restaurants container
+*/
+.restaurants {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+/*
+  Restaurant card
+
+*/
+.restaurant-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 25px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.2s;
+  width: 350px;
+}
+
+
+.restaurant-item:hover {
+  transform: translateY(-5px);
+}
+
+.restaurant-item__header {
+  position: relative;
+}
+
+.restaurant-item .restaurant-item__header .restaurant-item__header__image {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px 8px 0 0;
+}
+
+.restaurant-item .restaurant-item__header .restaurant-item__header__rating {
+  color: #919191; /* Warna bintang rating */
+  margin-top: 5px;
+}
+
+
+.restaurant-item .restaurant-item__header .restaurant-item__header__rating .restaurant-item__header__rating__score {
+  margin-left: 10px;
+}
+
+.restaurant-item .restaurant-item__content {
+  padding: 16px;
+}
+
+.restaurant-item .restaurant-item__content h3 {
+  margin: 0 0 10px 0;
+  min-width: 46px; /* Ukuran minimal lebar elemen */
+  min-height: 46px; /* Ukuran minimal tinggi elemen */
+  display: flex; /* Menggunakan flexbox untuk mengontrol ukuran */
+  align-items: center; /* Posisi teks secara vertikal di tengah elemen */
+  justify-content: center; /* Posisi teks secara horizontal di tengah elemen */
+}
+
+
+.restaurant-item .restaurant-item__content h3 a {
+  color: #830000;
+  text-decoration: none;
+  padding: 13px 20px;
+  font-size: 26px;
+}
+
+.restaurant-item .restaurant-item__content p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+
+/*detail*/
+
+.restaurant {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px 16px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.restaurant .restaurant__name {
+  font-size: 35px; /* Atur ukuran huruf menjadi lebih besar */
+  margin: 16px 0; /* Menambahkan margin di atas dan bawah nama restoran */
+  font-family: 'Century Schoolbook', sans-serif;
+}
+
+.restaurant .restaurant__poster {
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.restaurant .restaurant__info h4 {
+  margin: 8px 0;
+}
+
+
+/*
+  skip content
+*/
+.skip-to-main-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: #fff;
+  padding: 5px;
+  z-index: 999;
+  text-decoration: none;
+  color: #830000;
+  height: 40px;
+  font-size: large;
+}
+
+.skip-to-main-content:focus {
+  top: 0;
+}
+
+
+
+
+/*
+  Footer
+*/
+
+footer {
+  padding: 16px;
+  padding-top: 50px;
+}
+
+footer p {
+  text-align: center;
+  color: #aaaaaa;
+}
+
+footer p a {
+  display: inline-block; /* Membuat tautan menjadi elemen inline block */
+  padding: 1px;
+  color: #830000;
+  text-decoration: none;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+
